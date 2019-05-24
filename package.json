@@ -9,6 +9,10 @@
     "start": "cross-env NODE_ENV=production node server/index.ts",
     "generate": "nuxt generate"
   },
+  "engines": {
+    "node": "12.3.1",
+    "npm": "6.9.0."
+  },
   "dependencies": {
     "@nuxtjs/axios": "^5.5.1",
     "cross-env": "^5.2.0",
