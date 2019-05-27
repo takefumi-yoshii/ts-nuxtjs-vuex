@@ -1,2 +1,2 @@
-import './shims-vuex-imple'
+import './shims-vuex-impl'
 import './shims-vuex-type'
