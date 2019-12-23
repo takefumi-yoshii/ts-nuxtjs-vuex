@@ -16,11 +16,13 @@ declare module 'vuex' {
   type Mutations<S, M> = { [K in keyof M]: (state: S, payload: M[K]) => void }
   // ______________________________________________________
   //
-  type ExCommit<M> = <T extends keyof M>(type: T, payload?: M[T], options?: CommitOptions) => void
-  type ExDispatch<A> = <T extends keyof A>(type: T, payload?: A[T], options?: DispatchOptions) => any
+  type ExCommit<M> = <T extends keyof M>(type: T, payload?: M[T]) => void
+  type ExRootCommit = <T extends keyof RootMutations>(type: T, payload?: RootMutations[T], options?: CommitOptions) => void
+  type ExDispatch<A> = <T extends keyof A>(type: T, payload?: A[T]) => any
+  type ExRootDispatch = <T extends keyof RootActions>(type: T, payload?: RootActions[T], options?: DispatchOptions) => any
   type ExActionContext<S, A, G, M> = {
-    commit: ExCommit<M>
-    dispatch: ExDispatch<A>
+    commit: ExCommit<M> & ExRootCommit
+    dispatch: ExDispatch<A> & ExRootDispatch
     state: S
     getters: G
     rootState: RootState
